@@ -1,7 +1,7 @@
 # LewReorderableLayout
 一个 UICollectionViewLayout，长按可以拖拽排序，同时支持纵向和横线滚动。
 
-- ![效果图](https://github.com/pljhonglu/LewReorderableLayout/blob/master/demo.gif)
+![效果图](https://github.com/pljhonglu/LewReorderableLayout/blob/master/demo.gif)
 
 # 使用方法
 
