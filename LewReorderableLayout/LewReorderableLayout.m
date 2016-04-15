@@ -640,7 +640,11 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
 
 - (UIImage *)getCellImage{
     UIGraphicsBeginImageContextWithOptions(_cell.bounds.size, NO, [UIScreen mainScreen].scale * 2);
-    [_cell drawViewHierarchyInRect:_cell.bounds afterScreenUpdates:YES];
+
+    // fix issue #1
+    // [_cell drawViewHierarchyInRect:_cell.bounds afterScreenUpdates:YES];
+    [_cell.layer renderInContext:UIGraphicsGetCurrentContext()];
+
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
