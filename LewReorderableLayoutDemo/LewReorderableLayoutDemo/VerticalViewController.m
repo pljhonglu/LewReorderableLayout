@@ -36,7 +36,7 @@
         [_imagesForSection_0 addObject:image];
     }
     
-    for (int i = 18; i<30; i++) {
+    for (int i = 18; i<19; i++) {
         NSString *imageName = [NSString stringWithFormat:@"Sample%d.jpg",i];
         UIImage *image = [UIImage imageNamed:imageName];
         [_imagesForSection_1 addObject:image];
@@ -108,7 +108,16 @@
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
-    if ([collectionView numberOfItemsInSection:indexPath.section] <= 1) {
+    if (indexPath.section == 1 && indexPath.row == _imagesForSection_1.count-1) {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath{
+    if (fromIndexPath.section != toIndexPath.section && toIndexPath.row == _imagesForSection_1.count) {
+        return NO;
+    }else if (fromIndexPath.section == toIndexPath.section && toIndexPath.row == _imagesForSection_1.count-1){
         return NO;
     }
     return YES;

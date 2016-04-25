@@ -167,9 +167,9 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     }
     
     // can move item
-    if ([_delegate respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)]) {
-        
-        if (![_delegate collectionView:self.collectionView canMoveItemAtIndexPath:toIndexPath]) {
+    // 方便根据路径判断是否可移动，fixed #2
+    if ([_delegate respondsToSelector:@selector(collectionView:itemAtIndexPath:canMoveToIndexPath:)]) {
+        if (![_delegate collectionView:self.collectionView itemAtIndexPath:atIndexPath canMoveToIndexPath:toIndexPath]) {
             return;
         }
     }
@@ -389,7 +389,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
             }
         }
     }
-    
+
     if([gestureRecognizer isEqual:_longPress]){
         if (self.collectionView.panGestureRecognizer.state != UIGestureRecognizerStatePossible && self.collectionView.panGestureRecognizer.state != UIGestureRecognizerStateFailed) {
             return NO;
