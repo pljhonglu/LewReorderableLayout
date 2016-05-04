@@ -388,35 +388,29 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
                 return NO;
             }
         }
+    }else{
+        // fix #3
+        return NO;
     }
 
     if([gestureRecognizer isEqual:_longPress]){
-        if (self.collectionView.panGestureRecognizer.state != UIGestureRecognizerStatePossible && self.collectionView.panGestureRecognizer.state != UIGestureRecognizerStateFailed) {
-            return NO;
-        }
+        return (self.collectionView.panGestureRecognizer.state == UIGestureRecognizerStatePossible || self.collectionView.panGestureRecognizer.state == UIGestureRecognizerStateFailed);
+        
     }else if([gestureRecognizer isEqual:_panGesture]){
-        if (_longPress.state == UIGestureRecognizerStatePossible || _longPress.state == UIGestureRecognizerStateFailed) {
-            return NO;
-        }
+        return (_longPress.state != UIGestureRecognizerStatePossible && _longPress.state != UIGestureRecognizerStateFailed);
+        
     }
     return YES;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    
     if ([_panGesture isEqual:gestureRecognizer]) {
-        if ([_longPress isEqual:otherGestureRecognizer]) {
-            return YES;
-        }else{
-            return NO;
-        }
-    }else if ([_longPress isEqual:gestureRecognizer]) {
-        if ([_panGesture isEqual:otherGestureRecognizer]) {
-            return YES;
-        }
+        return [_longPress isEqual:otherGestureRecognizer];
+        
     }else if ([self.collectionView.panGestureRecognizer isEqual:gestureRecognizer]) {
-        if (_longPress.state == UIGestureRecognizerStatePossible || _longPress.state == UIGestureRecognizerStateFailed) {
-            return NO;
-        }
+        return (_longPress.state != UIGestureRecognizerStatePossible && _longPress.state != UIGestureRecognizerStateFailed);
+        
     }
     return YES;
 }
