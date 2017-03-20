@@ -63,6 +63,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     if (self) {
         _continuousScrollDirection = LewScrollDirctionStay;
         _trigerInsets = UIEdgeInsetsMake(100, 100, 100, 100);
+        _trigerPadding = UIEdgeInsetsZero;
         _scrollSpeedValue = 10.0f;
         [self configureObserver];
     }
@@ -74,6 +75,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     if (self) {
         _continuousScrollDirection = LewScrollDirctionStay;
         _trigerInsets = UIEdgeInsetsMake(100, 100, 100, 100);
+        _trigerPadding = UIEdgeInsetsZero;
         _scrollSpeedValue = 10.0f;
         [self configureObserver];
     }

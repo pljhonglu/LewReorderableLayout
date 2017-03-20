@@ -19,12 +19,16 @@
 
 @optional
 
-- (CGFloat)reorderingItemAlpha:(UICollectionView * )collectionview inSection:(NSInteger)section; //Default 0.
+// Default 0
+- (CGFloat)reorderingItemAlpha:(UICollectionView * )collectionview inSection:(NSInteger)section;
 
+// Default UIEdgeInsetsMake(100, 100, 100, 100)
 - (UIEdgeInsets)scrollTrigerEdgeInsetsInCollectionView:(UICollectionView *)collectionView;
 
+// Default UIEdgeInsetsZero
 - (UIEdgeInsets)scrollTrigerPaddingInCollectionView:(UICollectionView *)collectionView;
 
+// Default 10.0f
 - (CGFloat)scrollSpeedValueInCollectionView:(UICollectionView *)collectionView;
 
 @end
@@ -37,8 +41,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath;
 
+// Default YES
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath;
 
+// Default YES
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath;
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
